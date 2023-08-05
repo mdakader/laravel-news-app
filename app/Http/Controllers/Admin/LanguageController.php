@@ -14,7 +14,8 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        return view('admin.language.index');
+        $languages = Language::all();
+        return view('admin.language.index', compact('languages'));
     }
 
     /**
@@ -42,7 +43,7 @@ class LanguageController extends Controller
 
         toast(__('Created Successfully'),'success')->width('400');
 
-        return redirect()->back();
+        return redirect()->route('admin.language.index');
     }
 
     /**
