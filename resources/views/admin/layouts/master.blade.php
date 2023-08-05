@@ -91,6 +91,7 @@
         success_callback: null // Default: null
     });
 
+    $(".inputtags").tagsinput('items');
 
     // Add csrf token in ajax request
     $.ajaxSetup({
