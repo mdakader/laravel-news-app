@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminAuthenticationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\CategoryController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('login', [AdminAuthenticationController::class, 'login'])->name('login');
@@ -30,5 +31,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     /** Language Route */
     Route::resource('/language', LanguageController::class);
+
+    /** Category Route */
+    Route::resource('/category', CategoryController::class);
 });
 
