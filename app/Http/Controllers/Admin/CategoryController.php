@@ -87,8 +87,18 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(string $id)
     {
-        //
+
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+            return response(['status' => 'success', 'message' => __('Deleted Successfully!')]);
+        } catch (\Throwable $th) {
+            return response(['status' => 'error', 'message' => __('Something went wrong!')]);
+        }
     }
 }
