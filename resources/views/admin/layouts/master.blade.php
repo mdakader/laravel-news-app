@@ -72,6 +72,7 @@
 <script src="{{ asset('admin/assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
 <script src="{{ asset('admin/assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
 <!-- Sweet Alert Js -->
+@include('sweetalert::alert')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 

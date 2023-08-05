@@ -9,7 +9,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\FileUploadTrait;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class ProfileController extends Controller
 {
     use FileUploadTrait;
@@ -71,10 +71,10 @@ class ProfileController extends Controller
         $admin->email = $request->email;
         $admin->save();
 
+//        Alert::success(__('Updated Successfully'),'success')->width('400');
+        toast(__('Updated Successfully'),'success')->width('400');
         return redirect()->back();
     }
-
-
     /**
      * Update the specified resource for password.
      */
@@ -85,9 +85,10 @@ class ProfileController extends Controller
         $admin->password = bcrypt($request->password);
         $admin->save();
 
+//        Alert::success(__('Updated Successfully'),'success')->width('400');
+        toast(__('admin.Updated Successfully'),'success')->width('400');
         return redirect()->back();
     }
-
     /**
      * Remove the specified resource from storage.
      */
