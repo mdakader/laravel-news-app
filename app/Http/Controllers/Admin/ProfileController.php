@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\FileUploadTrait;
 
 class ProfileController extends Controller
 {
+    use FileUploadTrait;
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +23,7 @@ class ProfileController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
         //
     }
@@ -55,7 +57,10 @@ class ProfileController extends Controller
      */
     public function update(AdminProfileUpdateRequest $request, string $id)
     {
-        //
+        /** Handle image */
+        $imagePath = $this->handleFileUpload($request, 'image', $request->old_image);
+
+        dd($imagePath);
     }
 
     /**
