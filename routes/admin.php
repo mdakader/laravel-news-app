@@ -25,5 +25,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     /**Profile Routes */
     Route::resource('profile', ProfileController::class);
+    Route::put('profile-password-update/{id}', [ ProfileController::class, 'passwordUpdate'])->name('profile-password.update');
 });
 

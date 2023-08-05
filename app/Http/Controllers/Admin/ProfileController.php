@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminProfileUpdateRequest;
+use App\Http\Requests\AdminUpdatePasswordRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,6 +69,20 @@ class ProfileController extends Controller
         $admin->image = !empty($imagePath) ? $imagePath : $request->old_image;
         $admin->name = $request->name;
         $admin->email = $request->email;
+        $admin->save();
+
+        return redirect()->back();
+    }
+
+
+    /**
+     * Update the specified resource for password.
+     */
+    public function passwordUpdate(AdminUpdatePasswordRequest $request, string $id)
+    {
+
+        $admin = Admin::findOrFail($id);
+        $admin->password = bcrypt($request->password);
         $admin->save();
 
         return redirect()->back();
