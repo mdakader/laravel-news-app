@@ -91,7 +91,6 @@
         success_callback: null // Default: null
     });
 
-    $(".inputtags").tagsinput('items');
 
     // Add csrf token in ajax request
     $.ajaxSetup({
@@ -110,10 +109,56 @@
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-    });
+    })
 
+
+    /** Handle Dynamic delete **/
+    $(document).ready(function() {
+
+        $('.delete-item').on('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let url = $(this).attr('href');
+                    console.log(url);
+                    $.ajax({
+                        method: 'DELETE',
+                        url: url,
+                        success: function(data) {
+                            if (data.status === 'success') {
+                                Swal.fire(
+                                    'Deleted!',
+                                    data.message,
+                                    'success'
+                                )
+                                window.location.reload();
+                            } else if (data.status === 'error') {
+                                Swal.fire(
+                                    'Error!',
+                                    data.message,
+                                    'error'
+                                )
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
+
+
+                }
+            })
+        })
+    })
 </script>
-
 
 @stack('scripts')
 </body>
