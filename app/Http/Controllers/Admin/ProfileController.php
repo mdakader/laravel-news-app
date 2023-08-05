@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminProfileUpdateRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -12,7 +14,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('admin.profile.index');
+        $user = Auth::guard('admin')->user();
+        return view('admin.profile.index', compact('user'));
     }
 
     /**
@@ -50,7 +53,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AdminProfileUpdateRequest $request, string $id)
     {
         //
     }
