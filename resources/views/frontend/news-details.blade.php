@@ -686,82 +686,13 @@
                             <div class="blog-tags p-0">
                                 <ul class="list-inline">
 
+                                    @foreach($mostCommonTags as $tag)
                                     <li class="list-inline-item">
                                         <a href="#">
-                                            #property
+                                            #{{$tag->name}}
                                         </a>
                                     </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #sea
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #programming
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #sea
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #property
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #life style
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #technology
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #framework
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #sport
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #game
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #wfh
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #sport
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #game
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #wfh
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            #framework
-                                        </a>
-                                    </li>
-
+                                    @endforeach
                                 </ul>
                             </div>
                         </aside>
