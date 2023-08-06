@@ -178,30 +178,28 @@
                     @auth
                     <!-- Comment  -->
                     <div id="comments" class="comments-area">
-                        <h3 class="comments-title">2 Comments:</h3>
+                        <h3 class="comments-title">{{ $news->comments()->count() }} {{ __('Comments:') }}</h3>
 
                         <ol class="comment-list">
+                            @foreach ($news->comments()->whereNull('parent_id')->get() as $comment)
                             <li class="comment">
                                 <aside class="comment-body">
                                     <div class="comment-meta">
                                         <div class="comment-author vcard">
-                                            <img src="images/news2.jpg" class="avatar" alt="image">
-                                            <b class="fn">Sinmun</b>
-                                            <span class="says">says:</span>
+                                            <img src="{{ $comment->user->image ? $comment->user->image : asset('frontend/assets/images/avatar.png') }}" class="avatar" alt="image">
+                                            <b class="fn">{{ $comment->user->name }}</b>
+                                            <span class="says">{{ __('says') }}:</span>
                                         </div>
 
                                         <div class="comment-metadata">
-                                            <a href="#">
-                                                <span>April 24, 2019 at 10:59 am</span>
+                                            <a href="javascript:;">
+                                                <span>{{ date('M, d, Y H:i', strtotime($comment->created_at)) }}</span>
                                             </a>
                                         </div>
                                     </div>
 
                                     <div class="comment-content">
-                                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
-                                            when an unknown
-                                            printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
+                                        {{$comment->comment}}
                                     </div>
 
                                     <div class="reply">
@@ -248,39 +246,7 @@
                                     </li>
                                 </ol>
                             </li>
-
-                            <li class="comment">
-                                <aside class="comment-body">
-                                    <div class="comment-meta">
-                                        <div class="comment-author vcard">
-                                            <img src="images/news4.jpg" class="avatar" alt="image">
-                                            <b class="fn">Sinmun</b>
-                                            <span class="says">says:</span>
-                                        </div>
-
-                                        <div class="comment-metadata">
-                                            <a href="#">
-                                                <span>April 24, 2019 at 10:59 am</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="comment-content">
-                                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
-                                            when an unknown
-                                            printer took a galley of type and scrambled it to make a type specimen book.
-                                        </p>
-                                    </div>
-
-                                    <div class="reply">
-                                        <a href="#" class="comment-reply-link" data-toggle="modal"
-                                           data-target="#exampleModal">Reply</a>
-                                        <span>
-                                            <i class="fa fa-trash"></i>
-                                        </span>
-                                    </div>
-                                </aside>
-                            </li>
+                            @endforeach
                         </ol>
 
                         <div class="comment-respond">
