@@ -1,4 +1,5 @@
 <?php
+use App\Models\Language;
 
 /** format news tags */
 

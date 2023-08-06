@@ -135,11 +135,11 @@
                     <div class="wrap__profile">
                         <div class="wrap__profile-author">
                             <figure>
-                                <img src="images/news1.jpg" alt="" class="img-fluid rounded-circle">
+                                <img style="width: 200px;height: 200px;object-fit: cover;" src="{{ asset($news->auther->image) }}" alt="" class="img-fluid rounded-circle">
                             </figure>
                             <div class="wrap__profile-author-detail">
                                 <div class="wrap__profile-author-detail-name">author</div>
-                                <h4>jhon doe</h4>
+                                <h4>{{$news->auther->name}}</h4>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis laboriosam ad
                                     beatae itaque ea non
                                     placeat officia ipsum praesentium! Ullam?</p>
@@ -175,6 +175,7 @@
                     </div>
                     <!-- end author-->
 
+                    @auth
                     <!-- Comment  -->
                     <div id="comments" class="comments-area">
                         <h3 class="comments-title">2 Comments:</h3>
@@ -283,44 +284,34 @@
                         </ol>
 
                         <div class="comment-respond">
-                            <h3 class="comment-reply-title">Leave a Reply</h3>
+                            <h3 class="comment-reply-title">{{ __('Leave a Reply') }}</h3>
 
-                            <form class="comment-form">
+                            <form action="{{ route('news-comment') }}" method="POST" class="comment-form">
+                                @csrf
                                 <p class="comment-notes">
-                                    <span id="email-notes">Your email address will not be published.</span>
-                                    Required fields are marked
-                                    <span class="required">*</span>
+
                                 </p>
                                 <p class="comment-form-comment">
-                                    <label for="comment">Comment</label>
+                                    <label for="comment">{{ __('Comment') }}</label>
                                     <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525"
                                               required="required"></textarea>
-                                </p>
-                                <p class="comment-form-author">
-                                    <label>Name <span class="required">*</span></label>
-                                    <input type="text" id="author" name="name" required="required">
-                                </p>
-                                <p class="comment-form-email">
-                                    <label for="email">Email <span class="required">*</span></label>
-                                    <input type="email" id="email" name="email" required="required">
-                                </p>
-                                <p class="comment-form-url">
-                                    <label for="url">Website</label>
-                                    <input type="url" id="url" name="url">
-                                </p>
-                                <p class="comment-form-cookies-consent">
-                                    <input type="checkbox" value="yes" name="wp-comment-cookies-consent"
-                                           id="wp-comment-cookies-consent">
-                                    <label for="wp-comment-cookies-consent">Save my name, email, and website in this
-                                        browser for the next
-                                        span I comment.</label>
-                                </p>
+                                    <input type="hidden" name="news_id" value="{{ $news->id }}">
+                                    <input type="hidden" name="parent_id" value="">
+
                                 <p class="form-submit mb-0">
                                     <input type="submit" name="submit" id="submit" class="submit" value="Post Comment">
                                 </p>
                             </form>
                         </div>
                     </div>
+                    @else
+                        <div class="card my-5">
+                            <div class="card-body">
+                                <h5 class="p-0">{{ __('Please') }} <a href="{{ route('login') }}">{{ __('Login') }}</a> {{ __('to comment in the post!') }}</h5>
+                            </div>
+                        </div>
+                </div>
+            @endauth
                     <!-- Modal -->
                     <div class="comment_modal">
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
