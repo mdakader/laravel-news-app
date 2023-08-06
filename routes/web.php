@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +30,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-///** Admin Routes */
-//Route::get('/admin/dashboard',[DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.dashboard');
+///** Language Routes */
+Route::get('language', LanguageController::class)->name('language');
