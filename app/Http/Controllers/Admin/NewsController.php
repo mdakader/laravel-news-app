@@ -83,9 +83,25 @@ class NewsController extends Controller
         $news->tags()->attach($tagIds);
 
 
-        toast(__('admin.Created Successfully!'), 'success')->width('330');
+        toast(__('Created Successfully!'), 'success')->width('330');
 
         return redirect()->route('admin.news.index');
+    }
+
+    /**
+     * Change toggle status of news
+     */
+    public function toggleNewsStatus(Request $request)
+    {
+        try {
+            $news = News::findOrFail($request->id);
+            $news->{$request->name} = $request->status;
+            $news->save();
+
+            return response(['status' => 'success', 'message' => __('Updated successfully!')]);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     /**
