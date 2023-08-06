@@ -704,3 +704,54 @@
         </div>
     </section>
 @endsection
+
+@push('content')
+    <script>
+        $(document).ready(function(){
+            $('.delete-msg').on('click', function(e) {
+                e.preventDefault();
+                let id = $(this).data('id');
+                Swal.fire({
+                    title: '{{ __("Are you sure?") }}',
+                    text: "{{ __("You won'\t be able to revert this!") }}",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '{{ __("Yes, delete it!") }}'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            method: 'DELETE',
+                            url: "{{ route('news-comment-destroy') }}",
+                            data:{id:id},
+                            success: function(data) {
+                                if (data.status === 'success') {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        data.message,
+                                        'success'
+                                    )
+                                    window.location.reload();
+                                } else if (data.status === 'error') {
+                                    Swal.fire(
+                                        'Error!',
+                                        data.message,
+                                        'error'
+                                    )
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(error);
+                            }
+                        });
+
+
+                    }
+                })
+            })
+
+        })
+    </script>
+@endpush
