@@ -1,3 +1,8 @@
+@php
+    $languages = \App\Models\Language::where('status', 1)->get();
+@endphp
+
+
 <header class="bg-light">
     <!-- Navbar  Top-->
     <div class="topbar d-none d-sm-block">
@@ -18,7 +23,7 @@
                             </li>
                         </ul>
                         <div class="topbar-text">
-                            Friday, May 19, 2023
+                            {{ date('l, F j, Y') }}
                         </div>
                     </div>
                 </div>
@@ -26,9 +31,9 @@
                     <div class="list-unstyled topbar-right d-flex align-items-center justify-content-end">
                         <div class="topbar_language">
                             <select>
-                                <option>English</option>
-                                <option>Chines</option>
-                                <option>Korean</option>
+                            @foreach($languages as $language)
+                                    <option value="{{$language->lang}}" {{$language->default == 1? 'selected': ''}}>{{$language->name}}</option>
+                            @endforeach
                             </select>
                         </div>
 
