@@ -41,7 +41,15 @@ class HomeController extends Controller
             ->withLocalize()
             ->orderBy('id', 'desc')->first();
 
-        return view('frontend.news-details', compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost'));
+        $relatedPosts = News::where('slug', '!=', $news->slug)
+            ->where('category_id', $news->category_id)
+            ->activeEntries()
+            ->withLocalize()
+            ->take(5)
+            ->get();
+
+        return view('frontend.news-details',
+            compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts'));
     }
 
     public function countView($news)

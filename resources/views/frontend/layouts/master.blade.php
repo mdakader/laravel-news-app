@@ -15,7 +15,7 @@
     <meta name="twitter:title" content="@yield('meta_tw_title')" />
     <meta name="twitter:description" content="@yield('meta_tw_description')" />
     <meta name="twitter:image" content="@yield('meta_tw_image')" />
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{asset('frontend/assets/css/styles.css')}}" rel="stylesheet">
 </head>
