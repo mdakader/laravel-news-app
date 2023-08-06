@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">{{ __('Ttile') }}</label>
+                        <label for="">{{ __('Title') }}</label>
                         <input name="title" value="{{ $news->title }}" type="text" class="form-control"
                                id="name">
                         @error('title')
@@ -66,9 +66,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">{{ __('Content') }}</label>
-                        <textarea name="content" class="summernote-simple">{{ $news->content }}</textarea>
-                        @error('content')
+                        <label for="">{{ __('Details') }}</label>
+                        <textarea name="details" class="summernote-simple">{{ $news->details }}</textarea>
+                        @error('details')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
