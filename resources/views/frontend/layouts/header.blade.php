@@ -31,9 +31,9 @@
                     <div class="list-unstyled topbar-right d-flex align-items-center justify-content-end">
                         <div class="topbar_language">
                             <select id="site-language">
-                            @foreach($languages as $language)
-                                    <option value="{{$language->lang}}" {{$language->default == 1 ? 'selected' : ''}}>{{$language->name}}</option>
-                            @endforeach
+                                @foreach ($languages as $language)
+                                    <option value="{{ $language->lang }}" {{ getLangauge() === $language->lang ? 'selected' : '' }}>{{ $language->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
