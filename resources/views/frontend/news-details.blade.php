@@ -60,7 +60,7 @@
                         <div class="wrap__article-detail-content">
                             <div class="total-views">
                                 <div class="total-views-read">
-                                    15.k
+                                    {{$news->views}}
                                     <span>
                                         views
                                     </span>
