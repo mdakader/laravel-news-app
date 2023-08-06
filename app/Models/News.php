@@ -18,4 +18,9 @@ class News extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function auther()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 }

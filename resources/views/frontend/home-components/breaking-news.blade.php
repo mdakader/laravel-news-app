@@ -21,7 +21,7 @@
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">
                                                     <span class="text-primary">
-                                                       {{__('By')}} {{$news->auther_id}}
+                                                       {{__('By')}} {{$news->auther->name}}
                                                     </span>
                                                 </li>
                                                 <li class="list-inline-item">
@@ -35,7 +35,7 @@
                                         <div class="card__post__title">
                                             <h6>
                                                 <a href="./blog_details.html">
-                                                    {!! $news->title !!}
+                                                    {!! truncate($news->title) !!}
                                                 </a>
                                             </h6>
                                         </div>
