@@ -11,16 +11,22 @@ class HomeController extends Controller
     public function index(){
         $breakingNews = News::where(['is_breaking_news' => 1,])
             ->activeEntries()->withLocalize()->orderBy('id', 'DESC')->take(10)->get();
+
         return view('frontend.home', compact('breakingNews'));
     }
 
     public function ShowNews(string $slug){
+
         $news = News::with(['auther', 'tags'])->where('slug', $slug)
             ->activeEntries()->withLocalize()
             ->first();
+
         $this->countView($news);
 
-        return view('frontend.news-details', compact('news'));
+        $recentNews = News::with(['category', 'auther'])->where('slug','!=', $news->slug)
+            ->activeEntries()->withLocalize()->orderBy('id', 'DESC')->take(4)->get();
+
+        return view('frontend.news-details', compact('news', 'recentNews'));
     }
 
     public function countView($news)
