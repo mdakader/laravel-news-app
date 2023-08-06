@@ -76,7 +76,7 @@
                     <div class="form-group">
                         <label class="">{{ __('Tags') }}</label>
                         <input name="tags" type="text"
-                               value=""
+                               value="{{ formatTags($news->tags()->pluck('name')->toArray()) }}"
                                class="form-control inputtags">
                         @error('tags')
                         <p class="text-danger">{{ $message }}</p>
@@ -173,7 +173,6 @@
                         lang: lang
                     },
                     success: function(data) {
-                        $('#category').html("");
                         $('#category').html(
                             `<option value="">---{{ __('admin.Select') }}---</option>`);
 
