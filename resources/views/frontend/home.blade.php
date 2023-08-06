@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 @section('content')
 <!-- Trending news  carousel-->
-@include('frontend.home-components.trending-news')
+@include('frontend.home-components.breaking-news')
 <!-- End Trending news carousel -->
 
 <!-- Hero  news section-->
