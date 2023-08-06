@@ -13,4 +13,11 @@ class HomeController extends Controller
             ->activeEntries()->withLocalize()->orderBy('id', 'DESC')->take(10)->get();
         return view('frontend.home', compact('breakingNews'));
     }
+
+    public function ShowNews(string $slug){
+        $news = News::with(['auther', 'tags'])->where('slug', $slug)
+            ->activeEntries()->withLocalize()
+            ->first();
+        return view('frontend.news-details', compact('news'));
+    }
 }
