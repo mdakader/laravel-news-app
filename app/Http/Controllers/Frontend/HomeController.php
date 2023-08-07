@@ -22,8 +22,11 @@ class HomeController extends Controller
             ->orderBy('id', 'DESC')->take(7)
             ->get();
 
+        $recentNews = News::with(['category', 'auther'])->activeEntries()->withLocalize()
+            ->orderBy('id', 'DESC')->take(6)->get();
 
-        return view('frontend.home', compact('breakingNews', 'heroSlider'));
+
+        return view('frontend.home', compact('breakingNews', 'heroSlider', 'recentNews'));
     }
 
     public function ShowNews(string $slug){
