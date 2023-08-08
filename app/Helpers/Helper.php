@@ -1,5 +1,7 @@
 <?php
 use App\Models\Language;
+use App\Models\Setting;
+use PhpParser\Node\Expr\Cast\String_;
 
 /** format news tags */
 
@@ -53,4 +55,12 @@ function convertToKFormat(int $number): String
     }else {
         return round($number / 1000000, 1). 'M';
     }
+}
+
+
+/** get Setting */
+
+function getSetting($key){
+    $data = Setting::where('key', $key)->first();
+    return $data->value;
 }
