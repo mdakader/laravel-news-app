@@ -40,8 +40,14 @@
                     <li><a class="nav-link" href="{{route('admin.footer-info.index')}}">Footer Info</a></li>
                     <li><a class="nav-link" href="{{route('admin.footer-grid-one.index')}}">{{__('Footer Grid One')}}</a></li>
                     <li><a class="nav-link" href="{{route('admin.footer-grid-two.index')}}">{{__('Footer Grid Two')}}</a></li>
+                    <li><a class="nav-link" href="{{route('admin.footer-grid-three.index')}}">{{__('Footer Grid Three')}}</a></li>
                 </ul>
             </li>
+            <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+                <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                    <i class="fas fa-rocket"></i> Documentation
+                </a>
+            </div>
         </ul>
     </aside>
 </div>
