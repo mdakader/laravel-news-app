@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SubscribersController;
 use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\FooterGridOneController;
+use App\Http\Controllers\Admin\FooterGridTwoController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('login', [AdminAuthenticationController::class, 'login'])->name('login');
@@ -68,7 +69,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::resource('/footer-info', FooterInfoController::class);
 
     /** Footer Grid One Route */
-    Route::post('footer-grid-one-title', [FooterGridOneController::class, 'handleTitle'])->name('footer-grid-one-title');
     Route::resource('footer-grid-one', FooterGridOneController::class);
+
+    /** Footer Grid Twoe Route */
+    Route::resource('footer-grid-two', FooterGridTwoController::class);
 });
 
