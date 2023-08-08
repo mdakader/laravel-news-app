@@ -89,7 +89,7 @@ class SocialCountController extends Controller
 
         return redirect()->route('admin.social-count.index');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */

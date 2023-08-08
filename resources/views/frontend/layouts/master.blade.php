@@ -17,6 +17,8 @@
     <meta name="twitter:image" content="@yield('meta_tw_image')" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap-iconpicker.min.css') }}">
     <link href="{{asset('frontend/assets/css/styles.css')}}" rel="stylesheet">
 </head>
 
