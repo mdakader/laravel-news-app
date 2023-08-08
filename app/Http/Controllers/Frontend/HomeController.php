@@ -123,7 +123,24 @@ class HomeController extends Controller
             });
         });
 
-        return view('frontend.news');
+        $news->when($request->has('category') && !empty($request->category), function($query) use ($request) {
+            $query->whereHas('category', function($query) use ($request) {
+                $query->where('slug', $request->category);
+            });
+        });
+
+        $news->when($request->has('search'), function($query) use ($request) {
+            $query->where(function($query) use ($request){
+                $query->where('title', 'like','%'.$request->search.'%')
+                    ->orWhere('details', 'like','%'.$request->search.'%');
+            })->orWhereHas('category', function($query) use ($request){
+                $query->where('name', 'like','%'.$request->search.'%');
+            });
+        });
+
+        $news = $news->activeEntries()->withLocalize()->paginate(10);
+
+        return view('frontend.news', compact('news'));
     }
 
     public function countView($news)
