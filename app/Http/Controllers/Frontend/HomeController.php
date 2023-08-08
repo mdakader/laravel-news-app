@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\HomeSectionSetting;
 use App\Models\News;
@@ -138,9 +139,17 @@ class HomeController extends Controller
             });
         });
 
-        $news = $news->activeEntries()->withLocalize()->paginate(10);
+        $news = $news->activeEntries()->withLocalize()->paginate(20);
 
-        return view('frontend.news', compact('news'));
+
+        $recentNews = News::with(['category', 'auther'])
+            ->activeEntries()->withLocalize()->orderBy('id', 'DESC')->take(4)->get();
+
+        $mostCommonTags = $this->mostCommonTags();
+
+        $categories = Category::where(['status' => 1, 'language' => getLangauge()])->get();
+
+        return view('frontend.news', compact('news', 'recentNews', 'mostCommonTags', 'categories'));
     }
 
     public function countView($news)
