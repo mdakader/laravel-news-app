@@ -24,6 +24,11 @@
 
 <body>
 
+<!-- Global Variables -->
+@php
+    $socialLinks = \App\Models\SocialLink::where('status', 1)->get();
+@endphp
+
 <!-- Header news -->
 @include('frontend.layouts.header')
 <!-- End Header news -->

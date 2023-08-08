@@ -12,15 +12,12 @@
                     <div class="topbar-left topbar-right d-flex">
 
                         <ul class="topbar-sosmed p-0">
-                            <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </li>
+                            @foreach ($socialLinks as $link)
+                                <li>
+                                    <a href="{{ $link->url }}"><i class="{{ $link->icon }}"></i></a>
+                                </li>
+                            @endforeach
+
                         </ul>
                         <div class="topbar-text">
                             {{ date('l, F j, Y') }}
