@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SocialCountController;
 use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\SubscribersController;
 use App\Http\Controllers\Admin\SocialLinkController;
+use App\Http\Controllers\Admin\FooterInfoController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('login', [AdminAuthenticationController::class, 'login'])->name('login');
@@ -61,5 +62,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     /** SocialLink Route */
     Route::resource('/social-link', SocialLinkController::class);
+
+    /** Footer Info Route */
+    Route::resource('/footer-info', FooterInfoController::class);
 });
 
