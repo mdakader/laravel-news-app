@@ -4,7 +4,6 @@ namespace App\Traits;
 
 use Illuminate\Http\Request;
 use File;
-use Str;
 
 trait FileUploadTrait
 {
