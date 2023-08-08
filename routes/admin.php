@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\HomeSectionSettingController;
 use App\Http\Controllers\Admin\SocialCountController;
 use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\SubscribersController;
+use App\Http\Controllers\Admin\SocialLinkController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('login', [AdminAuthenticationController::class, 'login'])->name('login');
@@ -57,5 +58,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::resource('/ad', AdController::class);
     /** Subscribers Route */
     Route::resource('/subscribers', SubscribersController::class);
+
+    /** SocialLink Route */
+    Route::resource('/social-link', SocialLinkController::class);
 });
 
