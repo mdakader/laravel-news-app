@@ -380,11 +380,15 @@
                         </div>
                     </aside>
 
+                    @if($ad->home_middle_ad == 1)
                     <div class="small_add_banner">
                         <div class="small_add_banner_img">
-                            <img src="{{asset('frontend/assets/images/placeholder_large.jpg')}}" alt="adds">
+                            <a href="{{ $ad->home_middle_ad_url }}">
+                                <img src="{{ asset($ad->home_middle_ad) }}" alt="adds">
+                            </a>
                         </div>
                     </div>
+                    @endif
 
                     <aside class="wrapper__list__article mt-5">
                         <h4 class="border_section">{{ @$categorySectionFour->first()->category->name }}</h4>
@@ -572,14 +576,16 @@
                             </div>
                         </aside>
 
-                        <aside class="wrapper__list__article">
-                            <h4 class="border_section">Advertise</h4>
-                            <a href="#">
-                                <figure>
-                                    <img src="{{asset('frontend/assets/images/newsimage3.png')}}" alt="" class="img-fluid">
-                                </figure>
-                            </a>
-                        </aside>
+                        @if ($ad->side_bar_ad_status == 1)
+                            <aside class="wrapper__list__article">
+                                <h4 class="border_section">{{ __('Advertise') }}</h4>
+                                <a href="{{ $ad->side_bar_ad_url }}">
+                                    <figure>
+                                        <img src="{{ asset($ad->side_bar_ad) }}" alt="" class="img-fluid">
+                                    </figure>
+                                </a>
+                            </aside>
+                        @endif
 
                         <aside class="wrapper__list__article">
                             <h4 class="border_section">newsletter</h4>
