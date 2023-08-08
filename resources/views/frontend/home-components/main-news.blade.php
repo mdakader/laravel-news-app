@@ -587,55 +587,27 @@
                             </aside>
                         @endif
 
+
                         <aside class="wrapper__list__article">
-                            <h4 class="border_section">newsletter</h4>
+                            <h4 class="border_section">{{  __('newsletter') }}</h4>
                             <!-- Form Subscribe -->
                             <div class="widget__form-subscribe bg__card-shadow">
                                 <h6>
-                                    The most important world news and events of the day.
+                                    {{  __('The most important world news and events of the day') }}.
                                 </h6>
-                                <p><small>Get magzrenvi daily newsletter on your inbox.</small></p>
-                                <div class="input-group ">
-                                    <input type="text" class="form-control" placeholder="Your email address">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">sign up</button>
+                                <p><small>{{  __('Get magzrenvi daily newsletter on your inbox') }}.</small></p>
+                                <form action="" class="newsletter-form">
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control" name="email" placeholder="Your email address">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary newsletter-button" type="submit">{{  __('sign up') }}</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </aside>
                     </div>
                 </div>
-                <div class="mx-auto">
-                    <!-- Pagination -->
-                    <div class="pagination-area">
-                        <div class="pagination wow fadeIn animated" data-wow-duration="2s" data-wow-delay="0.5s"
-                             style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeIn;">
-                            <a href="#">
-                                «
-                            </a>
-                            <a href="#">
-                                1
-                            </a>
-                            <a class="active" href="#">
-                                2
-                            </a>
-                            <a href="#">
-                                3
-                            </a>
-                            <a href="#">
-                                4
-                            </a>
-                            <a href="#">
-                                5
-                            </a>
-
-                            <a href="#">
-                                »
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="clearfix"></div>
             </div>
         </div>

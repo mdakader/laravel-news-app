@@ -3,18 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     <title>@yield('title')</title>
-    <meta name="description" content="@yield('meta_description')" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="@yield('meta_description')"/>
+    <meta name="keywords" content=""/>
 
-    <meta name="og:title" content="@yield('meta_og_title')" />
-    <meta name="og:description" content="@yield('meta_og_description')" />
-    <meta name="og:image" content="@yield('meta_og_image')" />
-    <meta name="twitter:title" content="@yield('meta_tw_title')" />
-    <meta name="twitter:description" content="@yield('meta_tw_description')" />
-    <meta name="twitter:image" content="@yield('meta_tw_image')" />
+    <meta name="og:title" content="@yield('meta_og_title')"/>
+    <meta name="og:description" content="@yield('meta_og_description')"/>
+    <meta name="og:image" content="@yield('meta_og_image')"/>
+    <meta name="twitter:title" content="@yield('meta_tw_title')"/>
+    <meta name="twitter:description" content="@yield('meta_tw_description')"/>
+    <meta name="twitter:image" content="@yield('meta_tw_image')"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
@@ -28,10 +28,10 @@
 @include('frontend.layouts.header')
 <!-- End Header news -->
 
-    @yield('content')
+@yield('content')
 
 <!-- Footer Section -->
-    @include('frontend.layouts.footer')
+@include('frontend.layouts.footer')
 <!-- Footer Section End -->
 
 <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
@@ -61,9 +61,9 @@
         }
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         /** change language **/
-        $('#site-language').on('change', function() {
+        $('#site-language').on('change', function () {
             let languageCode = $(this).val();
             $.ajax({
                 method: 'GET',
@@ -71,17 +71,58 @@
                 data: {
                     language_code: languageCode
                 },
-                success: function(data) {
+                success: function (data) {
                     if (data.status === 'success') {
                         window.location.href = "{{ url('/') }}";
                     }
                 },
-                error: function(data) {
+                error: function (data) {
                     console.error(data);
                 }
             })
-        })
+        });
+    });
 
+    /*** Subscribe newsletter **/
+
+    /** Subscribe Newsletter**/
+    $('.newsletter-form').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            method: 'POST',
+            url: "{{ route('subscribe-newsletter') }}",
+            data: $(this).serialize(),
+            beforeSend: function () {
+                $('.newsletter-button').text('loading...');
+                $('.newsletter-button').attr('disabled', true);
+            },
+            success: function (data) {
+                if (data.status === 'success') {
+                    Toast.fire({
+                        icon: 'success',
+                        title: data.message
+                    })
+                    $('.newsletter-form')[0].reset();
+                    $('.newsletter-button').text('sign up');
+
+                    $('.newsletter-button').attr('disabled', false);
+                }
+            },
+            error: function (data) {
+                $('.newsletter-button').text('sign up');
+                $('.newsletter-button').attr('disabled', false);
+
+                if (data.status === 422) {
+                    let errors = data.responseJSON.errors;
+                    $.each(errors, function (index, value) {
+                        Toast.fire({
+                            icon: 'error',
+                            title: value[0]
+                        })
+                    })
+                }
+            }
+        })
     })
 </script>
 
