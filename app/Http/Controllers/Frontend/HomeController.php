@@ -109,6 +109,23 @@ class HomeController extends Controller
             compact('news', 'recentNews', 'mostCommonTags', 'nextPost', 'previousPost', 'relatedPosts'));
     }
 
+    /**
+     * @param $news News section
+     */
+
+    public function news(Request $request){
+
+        $news = News::query();
+
+        $news->when($request->has('tag'), function($query) use ($request){
+            $query->whereHas('tags', function($query) use ($request){
+                $query->where('name', $request->tag);
+            });
+        });
+
+        return view('frontend.news');
+    }
+
     public function countView($news)
     {
         if (session()->has('viewed_posts')) {
