@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Language;
 use Illuminate\Http\Request;
 
 class SocialCountController extends Controller
@@ -12,7 +13,8 @@ class SocialCountController extends Controller
      */
     public function index()
     {
-        return view('admin.social-count.index');
+        $languages = Language::all();
+        return view('admin.social-count.index', compact('languages'));
     }
 
     /**
@@ -20,7 +22,8 @@ class SocialCountController extends Controller
      */
     public function create()
     {
-        //
+        $languages = Language::all();
+        return view('admin.social-count.create', compact('languages'));
     }
 
     /**
