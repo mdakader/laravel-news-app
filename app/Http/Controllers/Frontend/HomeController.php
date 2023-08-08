@@ -56,10 +56,16 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
+
+        $mostViewedPosts = News::activeEntries()->withLocalize()
+            ->orderBy('views', 'DESC')
+            ->take(3)
+            ->get();
+
         return view('frontend.home',
             compact(
                 'breakingNews', 'heroSlider', 'recentNews', 'popularNews', 'categorySectionOne'
-                , 'categorySectionTwo', 'categorySectionThree', 'categorySectionFour'
+                , 'categorySectionTwo', 'categorySectionThree', 'categorySectionFour', 'mostViewedPosts'
             ));
     }
 
