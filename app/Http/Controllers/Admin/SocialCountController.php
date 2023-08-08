@@ -89,12 +89,15 @@ class SocialCountController extends Controller
 
         return redirect()->route('admin.social-count.index');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $socialCount = SocialCount::findOrFail($id);
+        $socialCount->delete();
+
+        return response(['status' => 'success', 'message' => __('admin.Deleted Successfully!')]);
     }
 }
