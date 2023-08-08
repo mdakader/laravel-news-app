@@ -3,15 +3,19 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>{{  __('Social Links') }}</h1>
+            <h1>{{ __('Social Links') }}</h1>
         </div>
 
         <div class="card card-primary">
             <div class="card-header">
-                <h4>{{  __('All social links') }}</h4>
-
+                <h4>{{ __('All social links') }}</h4>
+                <div class="card-header-action">
+                    <a href="{{ route('admin.social-link.create') }}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> {{ __('Create new') }}
+                    </a>
+                </div>
             </div>
-        </div>
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped" id="table-sub">
