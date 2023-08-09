@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\FooterGridThreeController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\SettingController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('login', [AdminAuthenticationController::class, 'login'])->name('login');
@@ -92,6 +93,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     /** Contact Message Route */
     Route::get('contact-message', [ContactMessageController::class, 'index'])->name('contact-message.index');
     Route::post('contact-send-replay', [ContactMessageController::class, 'sendReplay'])->name('contact.send-replay');
+
+    /** Settings Routes */
+    Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
+
+    /** Settings Routes */
+    Route::put('general-setting', [SettingController::class, 'updateGeneralSetting'])->name('general-setting.update');
 
 });
 

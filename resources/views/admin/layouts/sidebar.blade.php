@@ -32,7 +32,7 @@
                     <li class="{{ setSidebarActive(['admin.news.*']) }}"><a class="nav-link"
                                                                             href="{{ route('admin.news.index') }}">{{__('All News') }}</a>
                     </li>
-                    
+
                 </ul>
             </li>
 
@@ -113,8 +113,12 @@
                     </li>
 
                 </ul>
-            </li>
 
+            <li class="{{ setSidebarActive(['admin.setting.*']) }}">
+                <a class="nav-link" href="{{ route('admin.setting.index') }}"><i
+                        class="fas fa-cog"></i>
+                    <span>{{ __('Settings') }}</span></a></li>
+            </li>
 
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
 
