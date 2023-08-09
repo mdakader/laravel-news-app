@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap-iconpicker.min.css') }}">
     <link href="{{asset('frontend/assets/css/styles.css')}}" rel="stylesheet">
+    <style>
+        :root {
+            --colorPrimary: {{ $settings['site_color'] }};
+        }
+    </style>
 </head>
 
 <body>
