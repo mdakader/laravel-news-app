@@ -12,6 +12,7 @@ use App\Models\Tag;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 
 class NewsController extends Controller
@@ -37,6 +38,15 @@ class NewsController extends Controller
         return view('admin.news.index', compact('languages'));
     }
 
+    /**
+     * Pending News
+     */
+
+    public function pendingNews(): View
+    {
+        $languages = Language::all();
+        return view('admin.pending-news.index', compact('languages'));
+    }
 
     /**
      * Fetch category depending on language
