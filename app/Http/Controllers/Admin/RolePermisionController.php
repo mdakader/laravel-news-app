@@ -63,17 +63,33 @@ class RolePermisionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    function edit(string $id) : View
     {
-        //
+        $premissions = Permission::all()->groupBy('group_name');
+        $role = Role::findOrFail($id);
+        $rolesPermissions = $role->permissions;
+        $rolesPermissions = $rolesPermissions->pluck('name')->toArray();
+        return view('admin.role.edit', compact('premissions', 'role', 'rolesPermissions'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    function update(Request $request, string $id) : RedirectResponse {
+        $request->validate([
+            'role' => ['required', 'max:50', 'unique:permissions,name']
+        ]);
+
+        /** create the role */
+        $role = Role::findOrFail($id);
+        $role->update(['guard_name' => 'admin', 'name' => $request->role]);
+
+        /** assgin permissions to the role */
+        $role->syncPermissions($request->permissions);
+
+        toast(__('admin.Update Successfully'), 'success');
+
+        return redirect()->route('admin.role.index');
     }
 
     /**
