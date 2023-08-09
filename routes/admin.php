@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\RolePermisionController;
+use App\Http\Controllers\Admin\RoleUserController;
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('login', [AdminAuthenticationController::class, 'login'])->name('login');
@@ -110,5 +112,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::get('role/{id}/edit', [RolePermisionController::class, 'edit'])->name('role.edit');
     Route::put('role/{id}/edit', [RolePermisionController::class, 'update'])->name('role.update');
     Route::delete('role/{id}/destory', [RolePermisionController::class, 'destory'])->name('role.destory');
+
+    /** Admin User Routes */
+    Route::resource('role-users', RoleUserController::class);
 });
 
