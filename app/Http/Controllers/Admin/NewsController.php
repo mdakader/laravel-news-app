@@ -148,6 +148,13 @@ class NewsController extends Controller
     {
         $languages = Language::all();
         $news = News::findOrFail($id);
+
+        if(!canAccess(['news all-access'])){
+            if($news->auther_id != auth()->guard('admin')->user()->id){
+                return abort(404);
+            }
+        }
+
         $categories = Category::where('language', $news->language)->get();
 
         return view('admin.news.edit', compact('languages', 'news', 'categories'));
@@ -160,6 +167,10 @@ class NewsController extends Controller
     {
 
         $news = News::findOrFail($id);
+
+        if($news->auther_id != auth()->guard('admin')->user()->id || getRole() != 'Super Admin'){
+            return abort(404);
+        }
 
         /** Handle image */
         $imagePath = $this->handleFileUpload($request, 'image');
