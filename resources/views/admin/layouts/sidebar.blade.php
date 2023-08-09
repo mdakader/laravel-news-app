@@ -20,13 +20,27 @@
             </li>
             <li class="menu-header">Starter</li>
 
-            <li><a class="nav-link" href="{{route('admin.language.index')}}"><i class="far fa-square"></i> <span>Languages</span></a></li>
-            <li><a class="nav-link" href="{{route('admin.category.index')}}"><i class="far fa-square"></i> <span>Category</span></a></li>
-            <li><a class="nav-link" href="{{route('admin.home-section-setting.index')}}"><i class="far fa-square"></i> <span>Home Section Setting</span></a></li>
-            <li><a class="nav-link" href="{{route('admin.social-count.index')}}"><i class="far fa-square"></i> <span>Social Count</span></a></li>
-            <li><a class="nav-link" href="{{route('admin.contact-message.index')}}"><i class="far fa-square"></i> <span>Contact Messages</span></a></li>
-            <li><a class="nav-link" href="{{route('admin.ad.index')}}"><i class="far fa-square"></i> <span>Advertisement</span></a></li>
-            <li><a class="nav-link" href="{{route('admin.subscribers.index')}}"><i class="far fa-square"></i> <span>Subscribers</span></a></li>
+            <li><a class="nav-link" href="{{route('admin.language.index')}}"><i class="far fa-square"></i> <span>Languages</span></a>
+            </li>
+            <li><a class="nav-link" href="{{route('admin.category.index')}}"><i class="far fa-square"></i> <span>Category</span></a>
+            </li>
+            <li><a class="nav-link" href="{{route('admin.home-section-setting.index')}}"><i class="far fa-square"></i>
+                    <span>Home Section Setting</span></a></li>
+            <li><a class="nav-link" href="{{route('admin.social-count.index')}}"><i class="far fa-square"></i> <span>Social Count</span></a>
+            </li>
+
+            <li><a class="nav-link"
+                   href="{{ route('admin.contact-message.index') }}"><i class="fas fa-id-card-alt"></i>
+                    <span>{{ __('Contact Messages') }} </span>
+                    @if ($unReadMessages > 0)
+                        <i class="badge bg-danger" style="color:
+            #fff">{{ $unReadMessages }}</i>
+                    @endif
+                </a></li>
+            <li><a class="nav-link" href="{{route('admin.ad.index')}}"><i class="far fa-square"></i>
+                    <span>Advertisement</span></a></li>
+            <li><a class="nav-link" href="{{route('admin.subscribers.index')}}"><i class="far fa-square"></i> <span>Subscribers</span></a>
+            </li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>News</span></a>
                 <ul class="dropdown-menu">
@@ -46,9 +60,12 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{route('admin.social-link.index')}}">Social Links</a></li>
                     <li><a class="nav-link" href="{{route('admin.footer-info.index')}}">Footer Info</a></li>
-                    <li><a class="nav-link" href="{{route('admin.footer-grid-one.index')}}">{{__('Footer Grid One')}}</a></li>
-                    <li><a class="nav-link" href="{{route('admin.footer-grid-two.index')}}">{{__('Footer Grid Two')}}</a></li>
-                    <li><a class="nav-link" href="{{route('admin.footer-grid-three.index')}}">{{__('Footer Grid Three')}}</a></li>
+                    <li><a class="nav-link"
+                           href="{{route('admin.footer-grid-one.index')}}">{{__('Footer Grid One')}}</a></li>
+                    <li><a class="nav-link"
+                           href="{{route('admin.footer-grid-two.index')}}">{{__('Footer Grid Two')}}</a></li>
+                    <li><a class="nav-link"
+                           href="{{route('admin.footer-grid-three.index')}}">{{__('Footer Grid Three')}}</a></li>
                 </ul>
             </li>
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
