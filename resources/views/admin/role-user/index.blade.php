@@ -44,10 +44,10 @@
                                 <td>
                                     @if ($admin->getRoleNames()->first() != 'Super Admin')
 
-                                        <a href=""
+                                        <a href="{{ route('admin.role-users.edit', $admin->id) }}"
                                            class="btn btn-primary"><i class="fas fa-edit"></i></a>
 
-                                        <a href=""
+                                        <a href="{{ route('admin.role-users.destroy', $admin->id) }}"
                                            class="btn btn-danger delete-item"><i
                                                 class="fas fa-trash-alt"></i></a>
                                     @endif
