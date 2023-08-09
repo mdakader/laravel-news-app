@@ -113,11 +113,22 @@
                     </li>
 
                 </ul>
-
+            <li class="dropdown
+                {{ setSidebarActive([
+                    'admin.role.*',
+                    ]) }}
+                ">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-shield"></i>
+                    <span>{{ __('Access Management') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setSidebarActive(['admin.role.*']) }}"><a class="nav-link"
+                                                                            href="{{ route('admin.role.index') }}">{{ __('Roles and Permissions') }}</a></li>
+                </ul>
+            </li>
             <li class="{{ setSidebarActive(['admin.setting.*']) }}">
                 <a class="nav-link" href="{{ route('admin.setting.index') }}"><i
                         class="fas fa-cog"></i>
-                    <span>{{ __('Settings') }}</span></a></li>
+                    <span>{{ __('Settings') }}</span></a>
             </li>
 
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
