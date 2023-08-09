@@ -1,13 +1,13 @@
 <div class="card border border-primary">
     <div class="card-body">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.appearance-setting.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="form-group">
-                <label>{{__('Pick Your Color') }}</label>
+                <label>{{ __('admin.Pick Your Color') }}</label>
                 <div class="input-group colorpickerinput">
-                    <input value="" name="site_color" type="text" class="form-control">
+                    <input value="{{ $settings['site_color'] }}" name="site_color" type="text" class="form-control">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <i class="fas fa-fill-drip"></i>
@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">{{__('Save') }}</button>
+            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
         </form>
     </div>
 </div>
