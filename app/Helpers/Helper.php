@@ -71,7 +71,10 @@ function setSidebarActive(array $routes): ?string
 
 
 
-/** get Setting */
+/**
+ * Role User Create Mail
+ * get Setting
+ */
 
 function getSetting($key){
     $data = Setting::where('key', $key)->first();
