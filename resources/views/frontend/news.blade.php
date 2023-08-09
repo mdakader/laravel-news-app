@@ -40,7 +40,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3">
-                                    <button type="submit">{{ __('frontend.search') }}</button>
+                                    <button type="submit">{{ __('search') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -232,7 +232,7 @@
 
                         @if ($ad->side_bar_ad_status == 1)
                             <aside class="wrapper__list__article">
-                                <h4 class="border_section">{{ __('frontend.Advertise') }}</h4>
+                                <h4 class="border_section">{{__('Advertise') }}</h4>
                                 <a href="{{ $ad->side_bar_ad_url }}">
                                     <figure>
                                         <img src="{{ asset($ad->side_bar_ad) }}" alt="" class="img-fluid">
