@@ -11,6 +11,7 @@ use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\HomeSectionSetting;
 use App\Models\News;
+use App\Models\RecivedMail;
 use App\Models\SocialCount;
 use App\Models\SocialLink;
 use App\Models\Subscriber;
@@ -291,6 +292,13 @@ class HomeController extends Controller
             /** Send Mail */
             Mail::to($toMail->email)->send(new ContactMail($request->subject, $request->message, $request->email));
 
+            /** store the mail */
+
+            $mail = new RecivedMail();
+            $mail->email = $request->email;
+            $mail->subject = $request->subject;
+            $mail->message = $request->message;
+            $mail->save();
 
         }catch(\Exception $e){
             toast(__($e->getMessage()));
