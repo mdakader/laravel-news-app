@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class RoleUserController extends Controller
 {
@@ -22,7 +23,8 @@ class RoleUserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('admin.role-user.create', compact('roles'));
     }
 
     /**
