@@ -10,6 +10,12 @@ use App\Traits\FileUploadTrait;
 
 class FooterInfoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:footer index,admin'])->only(['index']);
+        $this->middleware(['permission:footer create,admin'])->only(['store']);
+    }
+
 
     use FileUploadTrait;
     /**
