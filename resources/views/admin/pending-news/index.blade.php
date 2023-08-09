@@ -101,6 +101,37 @@
                 [0, 'desc']
             ]
         });
-        
+
+
+        $(document).ready(function(){
+
+            $('#approve-input').on('change', function(){
+                $('#approve_form').submit();
+            });
+
+            $('#approve_form').on('submit', function(e){
+                e.preventDefault();
+
+                let data = $(this).serialize();
+                $.ajax({
+                    method: 'PUT',
+                    url: "{{ route('admin.approve.news') }}",
+                    data: data,
+                    success: function(data){
+                        if(data.status === 'success'){
+                            Toast.fire({
+                                icon: 'success',
+                                title: data.message
+                            })
+
+                            window.location.reload();
+                        }
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                })
+            })
+        })
     </script>
 @endpush

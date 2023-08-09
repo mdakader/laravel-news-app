@@ -11,6 +11,7 @@ use App\Models\News;
 use App\Models\Tag;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
@@ -57,6 +58,18 @@ class NewsController extends Controller
         return $categories;
     }
 
+
+    /**
+     * News approve ajax request
+     */
+    function approveNews(Request $request): Response
+    {
+        $news = News::findOrFail($request->id);
+        $news->is_approved = $request->is_approve;
+        $news->save();
+
+        return response(['status' => 'success', 'message' => __('Updated Successfully')]);
+    }
 
     /**
      * Show the form for creating a new resource.
