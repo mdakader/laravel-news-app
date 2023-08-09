@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Response;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -95,8 +96,15 @@ class RolePermisionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+
+    function destory(string $id) : Response {
+        $role = Role::findOrFail($id);
+        if($role->name === 'Super Admin'){
+            return response(['status' => 'error', 'message' => __('admin.Can\'t Delete the Super Admin')]);
+        }
+
+        $role->delete();
+
+        return response(['status' => 'success', 'message' => __('Deleted Successfully')]);
     }
 }
