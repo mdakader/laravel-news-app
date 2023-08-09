@@ -24,6 +24,13 @@
             </li>
             <li><a class="nav-link" href="{{route('admin.category.index')}}"><i class="far fa-square"></i> <span>Category</span></a>
             </li>
+            <li class="dropdown active">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>News</span></a>
+                <ul class="dropdown-menu">
+                    <li class="active"><a class="nav-link" href="{{route('admin.news.index')}}">All News</a></li>
+                    <li><a class="nav-link" href="">Editor</a></li>
+                </ul>
+            </li>
             <li><a class="nav-link" href="{{route('admin.home-section-setting.index')}}"><i class="far fa-square"></i>
                     <span>Home Section Setting</span></a></li>
             <li><a class="nav-link" href="{{route('admin.social-count.index')}}"><i class="far fa-square"></i> <span>Social Count</span></a>
@@ -41,13 +48,7 @@
                     <span>Advertisement</span></a></li>
             <li><a class="nav-link" href="{{route('admin.subscribers.index')}}"><i class="far fa-square"></i> <span>Subscribers</span></a>
             </li>
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>News</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{route('admin.news.index')}}">All News</a></li>
-                    <li><a class="nav-link" href="">Editor</a></li>
-                </ul>
-            </li>
+
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Pages</span></a>
                 <ul class="dropdown-menu">

@@ -45,7 +45,6 @@ function truncate(string $text, int $limit = 45): String
 }
 
 /** Convert a number in K format */
-
 function convertToKFormat(int $number): String
 {
     if($number < 1000){
@@ -56,6 +55,20 @@ function convertToKFormat(int $number): String
         return round($number / 1000000, 1). 'M';
     }
 }
+
+
+/** Make Sidebar Active */
+
+function setSidebarActive(array $routes): ?string
+{
+    foreach($routes as $route){
+        if(request()->routeIs($route)){
+            return 'active';
+        }
+    }
+    return '';
+}
+
 
 
 /** get Setting */
