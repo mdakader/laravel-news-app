@@ -31,9 +31,9 @@
                                 @foreach ($premission as $item)
                                     <div class="col-md-2">
                                         <label class="custom-switch mt-2">
-                                            <input value="{{ $item->name }}" type="checkbox" name="permissions[]" class="custom-switch-input">
+                                            <input value="" type="checkbox" name="permissions[]" class="custom-switch-input">
                                             <span class="custom-switch-indicator"></span>
-                                            <span class="custom-switch-description text-primary">{{ $item->name }}</span>
+                                            <span class="custom-switch-description text-primary"></span>
                                         </label>
 
                                     </div>

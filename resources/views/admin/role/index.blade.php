@@ -46,10 +46,10 @@
                                 </td>
                                 <td>
                                     @if ($role->name != 'Super Admin')
-                                        <a href="{{ route('admin.role.edit', $role->id) }}"
+                                        <a href=""
                                            class="btn btn-primary"><i class="fas fa-edit"></i></a>
 
-                                        <a href="{{ route('admin.role.destory', $role->id) }}"
+                                        <a href=""
                                            class="btn btn-danger delete-item"><i
                                                 class="fas fa-trash-alt"></i></a>
                                     @endif
