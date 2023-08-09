@@ -38,7 +38,7 @@
 
                                             <div class="form-group">
                                                 <label for="">{{__('Site Name') }}</label>
-                                                <input type="text" name="site_name" class="form-control" value="">
+                                                <input type="text" name="site_name" class="form-control" value="{{ $settings['site_name'] }}">
                                                 @error('site_name')
                                                 <p class="text-danger">{{ $message }}</p>
                                                 @enderror
@@ -67,7 +67,7 @@
                             <div class="tab-pane fade show" id="profile4" role="tabpanel" aria-labelledby="home-tab4">
                                 <div class="card border border-primary">
                                     <div class="card-body">
-                                        <form action="{{ route('admin.general-setting.update') }}" method="POST" enctype="multipart/form-data">
+                                        <form action="" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
 
@@ -102,7 +102,7 @@
                             <div class="tab-pane fade show" id="contact4" role="tabpanel" aria-labelledby="home-tab4">
                                 <div class="card border border-primary">
                                     <div class="card-body">
-                                        <form action="{{ route('admin.general-setting.update') }}" method="POST" enctype="multipart/form-data">
+                                        <form action="" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
 
