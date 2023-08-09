@@ -121,7 +121,7 @@ class RoleUserController extends Controller
     {
         $user = Admin::findOrFail($id);
         if($user->getRoleNames()->first() === 'Super Admin'){
-            return response(['status' => 'error', 'message' => __('admin.Can\'t Delete the Super User')]);
+            return response(['status' => 'error', 'message' => __('Can\'t Delete the Super User')]);
         }
         $user->delete();
 
