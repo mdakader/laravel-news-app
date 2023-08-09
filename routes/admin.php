@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\FooterGridOneController;
 use App\Http\Controllers\Admin\FooterGridTwoController;
 use App\Http\Controllers\Admin\FooterGridThreeController;
+use App\Http\Controllers\Admin\AboutController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('login', [AdminAuthenticationController::class, 'login'])->name('login');
@@ -77,5 +78,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     /** Footer Grid Three Route */
     Route::resource('footer-grid-three', FooterGridThreeController::class);
+
+    /** About page Route */
+    Route::get('about', [AboutController::class, 'index'])->name('about.index');
+    Route::put('about', [AboutController::class, 'update'])->name('about.update');
 });
 
