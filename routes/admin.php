@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\FooterGridOneController;
 use App\Http\Controllers\Admin\FooterGridTwoController;
 use App\Http\Controllers\Admin\FooterGridThreeController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ContactController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::get('login', [AdminAuthenticationController::class, 'login'])->name('login');
@@ -82,5 +83,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     /** About page Route */
     Route::get('about', [AboutController::class, 'index'])->name('about.index');
     Route::put('about', [AboutController::class, 'update'])->name('about.update');
+
+    /** Contact page Route */
+    Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::put('contact', [ContactController::class, 'update'])->name('contact.update');
 });
 
