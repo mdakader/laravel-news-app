@@ -12,7 +12,7 @@
 
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('admin.role.store') }}" method="POST">
                     @csrf
 
                     <div class="form-group">
@@ -24,47 +24,24 @@
                     </div>
 
                     <hr>
+                    @foreach ($premissions as $groupName => $premission)
+                        <div class="form-group">
+                            <h6 class="text-primary">{{ $groupName }}</h6>
+                            <div class="row">
+                                @foreach ($premission as $item)
+                                    <div class="col-md-2">
+                                        <label class="custom-switch mt-2">
+                                            <input value="{{ $item->name }}" type="checkbox" name="permissions[]" class="custom-switch-input">
+                                            <span class="custom-switch-indicator"></span>
+                                            <span class="custom-switch-description text-primary">{{ $item->name }}</span>
+                                        </label>
 
-                    <div class="form-group">
-                        <h6 class="text-primary">Category Permissions</h6>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label class="custom-switch mt-2">
-                                    <input type="checkbox" name="custom-switch-checkbox"
-                                           class="custom-switch-input">
-                                    <span class="custom-switch-indicator"></span>
-                                    <span class="custom-switch-description">Category Index</span>
-                                </label>
-                            </div>
-                            <div class="col-md-2">
-                                <label class="custom-switch mt-2">
-                                    <input type="checkbox" name="custom-switch-checkbox"
-                                           class="custom-switch-input">
-                                    <span class="custom-switch-indicator"></span>
-                                    <span class="custom-switch-description">Category Create</span>
-                                </label>
-                            </div>
-                            <div class="col-md-2">
-                                <label class="custom-switch mt-2">
-                                    <input type="checkbox" name="custom-switch-checkbox"
-                                           class="custom-switch-input">
-                                    <span class="custom-switch-indicator"></span>
-                                    <span class="custom-switch-description">Category Update</span>
-                                </label>
-                            </div>
-                            <div class="col-md-2">
-                                <label class="custom-switch mt-2">
-                                    <input type="checkbox" name="custom-switch-checkbox"
-                                           class="custom-switch-input">
-                                    <span class="custom-switch-indicator"></span>
-                                    <span class="custom-switch-description">Category Delete</span>
-                                </label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-
-                    <hr>
-
+                        <hr>
+                    @endforeach
                     <button type="submit" class="btn btn-primary">{{__('Create') }}</button>
                 </form>
             </div>
