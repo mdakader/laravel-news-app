@@ -16,7 +16,7 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="">{{__('admin.User Name')}}</label>
+                        <label for="">{{__('User Name')}}</label>
                         <input type="text" class="form-control" name="name">
                         @error('name')
                         <p class="text-danger">{{ $message }}</p>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">{{__('admin.Email')}}</label>
+                        <label for="">{{__('Email')}}</label>
                         <input type="text" class="form-control" name="email">
                         @error('email')
                         <p class="text-danger">{{ $message }}</p>
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">{{__('admin.Password')}}</label>
+                        <label for="">{{__('Password')}}</label>
                         <input type="password" class="form-control" name="password">
                         @error('password')
                         <p class="text-danger">{{ $message }}</p>
@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">{{__('admin. Confirm Password')}}</label>
+                        <label for="">{{__(' Confirm Password')}}</label>
                         <input type="password" class="form-control" name="password_confirmation">
                         @error('password_confirmation')
                         <p class="text-danger">{{ $message }}</p>
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">{{__('admin.Role')}}</label>
+                        <label for="">{{__('Role')}}</label>
 
                         <select name="role" id="" class="select2 form-control">
                             <option value="">{{__('--Select--') }}</option>

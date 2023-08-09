@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminRoleUserStoreRequest;
 use App\Models\Admin;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -30,9 +32,30 @@ class RoleUserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AdminRoleUserStoreRequest $request) : RedirectResponse
     {
-        //
+
+        try {
+            $user = new Admin();
+            $user->image = '';
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->status = 1;
+            $user->save();
+
+            /** assign the role to user */
+            $user->assignRole($request->role);
+
+            toast(__('Created Successfully!'), 'success');
+
+            return redirect()->route('admin.role-users.index');
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
+
     }
 
     /**
