@@ -45,6 +45,7 @@
                                     @endif
                                 </td>
                                 <td>
+
                                     @if ($role->name != 'Super Admin')
                                         <a href="{{ route('admin.role.edit', $role->id) }}"
                                            class="btn btn-primary"><i class="fas fa-edit"></i></a>
@@ -53,6 +54,7 @@
                                            class="btn btn-danger delete-item"><i
                                                 class="fas fa-trash-alt"></i></a>
                                     @endif
+
                                 </td>
                             </tr>
                         @endforeach

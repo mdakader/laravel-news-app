@@ -19,10 +19,11 @@
             <li class="menu-header">{{__('Starter') }}</li>
 
 
-            <li class="{{ setSidebarActive(['admin.category.*']) }}"><a class="nav-link"
-                                                                        href="{{ route('admin.category.index') }}"><i
-                        class="fas fa-list"></i>
-                    <span>{{__('Category') }}</span></a></li>
+            @if (canAccess(['category index', 'category create', 'category udpate', 'category delete']))
+                <li class="{{ setSidebarActive(['admin.category.*']) }}"><a class="nav-link"
+                                                                            href="{{ route('admin.category.index') }}"><i class="fas fa-list"></i>
+                        <span>{{ __('Category') }}</span></a></li>
+            @endif
 
 
             <li class="dropdown {{ setSidebarActive(['admin.news.*', 'admin.pending.news']) }}">
